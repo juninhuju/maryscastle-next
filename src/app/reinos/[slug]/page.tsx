@@ -107,7 +107,10 @@ export default async function KingdomPage({ params }: PageProps) {
 
       <nav className="kingdom-navigation" aria-label="Navegação entre reinos">
         <div className="kingdom-pager">
-          <Link className="kingdom-pager-link" href={reinoAnterior.rota}>
+          <Link
+            className="kingdom-pager-link"
+            href={`/reinos/${reinoAnterior.slug}`}
+          >
             <span>Reino anterior</span>
             <strong>{reinoAnterior.titulo}</strong>
           </Link>
@@ -116,7 +119,7 @@ export default async function KingdomPage({ params }: PageProps) {
           </Link>
           <Link
             className="kingdom-pager-link kingdom-pager-next"
-            href={reinoProximo.rota}
+            href={`/reinos/${reinoProximo.slug}`}
           >
             <span>Próximo reino</span>
             <strong>{reinoProximo.titulo}</strong>

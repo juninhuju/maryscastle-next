@@ -3,7 +3,6 @@
 import { useState, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import './Header.css';
 
 export default function Header() {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
