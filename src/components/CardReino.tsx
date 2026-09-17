@@ -26,10 +26,7 @@ export default function CardReino({ reino }: CardReinoProps) {
       <div className="card-body">
         <h4 className="card-title">{reino.titulo}</h4>
         <p className="card-text">{reino.guardiao}</p>
-        <Link
-          className="reino-action"
-          href={reino.rota || `/reinos/${reino.slug}`}
-        >
+        <Link className="reino-action" href={`/reinos/${reino.slug}`}>
           <span>Descobrir Reino</span>
           <span className="reino-action-arrow" aria-hidden="true">
             →

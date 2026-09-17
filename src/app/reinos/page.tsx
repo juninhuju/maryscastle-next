@@ -42,7 +42,7 @@ export default function ReinosPage() {
                 <p className="card-description">{reino.introducao}</p>
                 <Link
                   className="reino-action"
-                  href={reino.rota || `/reinos/${reino.slug}`}
+                  href={`/reinos/${reino.slug}`}
                 >
                   <span>Acessar reino</span>
                   <span className="reino-action-arrow" aria-hidden="true">
