@@ -1,69 +1,103 @@
+import type { Metadata } from "next";
+import Link from "next/link";
 import Image from "next/image";
+import Sinopse from "@/components/Sinopse";
+import CardReino from "@/components/CardReino";
+import Comentario from "@/components/Comentario";
+import { reinos } from "@/data/reinos";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "Início | O Castelo das Marias",
+  description:
+    "Consumido pela dor da traição e por uma sede implacável de vingança, Joaquim é tragado para além dos limites da razão no romance sobrenatural O Castelo das Marias.",
+};
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="container-fluid page-home">
+      <h1>O Castelo das Marias | Romance Sobrenatural</h1>
+      <p className="lead home-lead">
+        Consumido pela dor da traição da esposa e por uma sede implacável de
+        vingança, Joaquim é tragado para além dos limites da razão. Em um
+        universo paralelo regido por quatro reinos misteriosos, ele descobre que
+        o amor traído, o rancor e os desejos ocultos cobram um preço onde a
+        própria alma é a moeda de troca.
+      </p>
+
+      <div className="home-quick-actions" aria-label="Comece por aqui">
+        <Link href="/livro" className="quick-action quick-action-primary">
+          <span className="quick-action-kicker">Entrada para a história</span>
+          <strong>Ler o primeiro capítulo</strong>
+          <span>Conheça Joaquim e o Castelo</span>
+        </Link>
+        <Link href="/quiz" className="quick-action quick-action-secondary">
+          <span className="quick-action-kicker">Uma descoberta pessoal</span>
+          <strong>Fazer o quiz</strong>
+          <span>Descubra qual reino chama por você</span>
+        </Link>
+      </div>
+
+      <div className="home-cover-frame">
+        <picture>
+          <source srcSet="/livro.webp" type="image/webp" />
+          <img
+            fetchPriority="high"
+            decoding="async"
+            alt="Capa do livro O Castelo das Marias, romance de fantasia"
+            id="capa-livro"
+            src="/livro.webp"
+          />
+        </picture>
+        <span className="home-cover-caption">O Castelo das Marias</span>
+      </div>
+
+      <Sinopse />
+
+      <section className="cards-section">
+        <h2>Conheça os quatro reinos</h2>
+        <div className="cards-grid">
+          {reinos.map((reino) => (
+            <CardReino key={reino.slug} reino={reino} />
+          ))}
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      </section>
+
+      <section className="chapter-preview">
+        <p className="section-kicker">Uma passagem para o castelo</p>
+        <h2>O primeiro capítulo</h2>
+        <div className="chapter-preview-layout">
+          <blockquote className="chapter-banner">
+            “As figuras que antes simulavam humanidade agora se retorciam em
+            formas grotescas. Joaquim sentiu o calafrio: aquilo não era uma
+            sala, era um covil.”
+          </blockquote>
+          <Link
+            href="/livro"
+            className="chapter-cover-link"
+            aria-label="Ler o primeiro capítulo de O Castelo das Marias"
           >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <picture>
+              <source srcSet="/Adaga.webp" type="image/webp" />
+              <img
+                src="/Adaga.webp"
+                alt="Capa do primeiro capítulo do livro O Castelo das Marias"
+                className="chapter-cover"
+                loading="lazy"
+              />
+            </picture>
+            <span className="chapter-cover-caption">
+              Abrir capítulo <span aria-hidden="true">→</span>
+            </span>
+          </Link>
+          <blockquote className="chapter-banner">
+            “Entre o sangue e a seda, a vingança de Joaquim e o renascimento de
+            Maria colidem. Não espere redenção ou respostas fáceis; aqui, o
+            destino só conhece caminhos tortuosos.”
+          </blockquote>
         </div>
-      </main>
+      </section>
+
+      <Comentario />
     </div>
   );
 }
